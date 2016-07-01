@@ -1,0 +1,48 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jun 30, 2016, 10:49:32 PM
+    Author     : Nemanja
+*/
+
+#errors
+{
+    border: 2px;
+    border-style: solid;
+    border-color: #ff6400;
+    display: block;
+    text-align: center;
+}
+
+.error
+{
+    color: #ff6666;
+}
+
+.registration
+{
+    margin: 0 auto;
+}
+
+.centered
+{
+    display: block;
+    text-align: center;
+}
+
+.fieldLabel
+{
+    float: left;
+    display: inline-block;
+    width: 10%;
+    text-align: right;
+    margin-right: 10px;
+}
+
+.confirmMsg
+{
+    margin: 0;
+}

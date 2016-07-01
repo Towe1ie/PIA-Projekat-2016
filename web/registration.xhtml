@@ -1,0 +1,121 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+
+    </h:head>
+    <h:body>
+        <ui:composition template="/Templates/master.xhtml">
+
+
+            <ui:define name="title"> TITL </ui:define>
+
+            <ui:define name="content">
+                <script src="registration.js"/>
+
+                <div>
+                    <h:form id="id_regform" style="margin: 0">
+
+                        <div style="margin: 0px">
+                            <p:outputLabel for="id_username" class="fieldLabel" value="Username: "/>
+                            <p:inputText id="id_username"
+                                         class="right"
+                                         value="#{registration.username}"
+                                         required="true"/>
+                            <span id="id_user_msg" class="confirmMsg"></span>
+                        </div> 
+
+                        <div>
+                            <p:outputLabel for="id_pass1" class="fieldLabel" value="Password:"/>
+                            <p:password id="id_pass1"
+                                        class="right"
+                                        value="#{registration.password}"
+                                        required="true"
+                                        onkeyup="checkPassword1(); return false;"
+                                        >
+                            </p:password>
+                            <span id="id_pass1_msg" class="confirmMsg"></span>
+                        </div>
+
+                        <div>
+                            <p:outputLabel for="id_pass2" class="fieldLabel" value="Confirm password:"/>   
+                            <p:password id="id_pass2"
+                                        class="right"
+                                        required="true"
+                                        onkeyup="checkPassword2(); return false;"
+                                        >
+                            </p:password>
+                            <span id="id_pass2_msg" class="confirmMsg"></span>
+                        </div>
+
+                        <div>
+                            <p:outputLabel for="id_firstName" class="fieldLabel" value="First name:"/>   
+                            <p:inputText id="id_firstName"
+                                         class="right"
+                                         required="true"
+                                         >
+                            </p:inputText>
+                        </div>
+
+                        <div>
+                            <p:outputLabel for="id_lastName" class="fieldLabel" value="Last name:"/>   
+                            <p:inputText id="id_lastName"
+                                         class="right"
+                                         required="true"
+                                         >
+                            </p:inputText>
+                        </div>
+
+                        <div>
+                            <p:outputLabel for="id_phone" class="fieldLabel" value="Phone number:"/>   
+                            <p:inputText id="id_phone"
+                                         class="right"
+                                         required="true"
+                                         >
+                            </p:inputText>
+                        </div>
+
+                        <div>
+                            <p:outputLabel for="id_email" class="fieldLabel" value="E-mail:"/>   
+                            <p:inputText id="id_email"
+                                         class="right"
+                                         required="true"
+                                         >
+                            </p:inputText>
+                        </div>
+
+                        <div>
+                            <p:outputLabel for="id_organziation" class="fieldLabel" value="Organization:"/>   
+                            <p:inputText id="id_organziation"
+                                         class="right"
+                                         required="true"
+                                         >
+                            </p:inputText>
+                        </div>
+                        
+                        <div>
+                            <p:outputLabel for="id_dateOfBirth" class="fieldLabel" value="Date of birth:"/>
+                            <p:calendar id="id_dateOfBirth"
+                                        class="right"
+                                        required="true"/>
+                        </div>
+
+                        <f:facet name="footer">
+                            <div class="centered">
+                                <p:commandButton value="Register"/>
+                            </div>
+                        </f:facet>
+
+                    </h:form>
+                </div>
+
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+
