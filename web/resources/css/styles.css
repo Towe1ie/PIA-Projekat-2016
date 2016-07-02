@@ -37,7 +37,7 @@ and open the template in the editor.
 {
     float: left;
     display: inline-block;
-    width: 10%;
+    width: 200px;
     text-align: right;
     margin-right: 10px;
 }
