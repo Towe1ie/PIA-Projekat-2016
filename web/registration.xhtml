@@ -3,7 +3,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Facelet Title</title>
@@ -21,8 +20,8 @@
                 <div>
                     <h:form id="id_regform" style="margin: 0" enctype="multipart/form-data">
                         <div style="margin: 0px">
-                            <p:outputLabel for="id_username" class="fieldLabel" value="Username: "/>
-                            <p:inputText id="id_username"
+                            <h:outputLabel for="id_username" class="fieldLabel" value="Username: "/>
+                            <h:inputText id="id_username"
                                          class="right"
                                          value="#{registration.username}"
                                          required="true"/>
@@ -30,103 +29,94 @@
                         </div> 
 
                         <div>
-                            <p:outputLabel for="id_pass1" class="fieldLabel" value="Password:"/>
-                            <p:password id="id_pass1"
-                                        class="right"
-                                        value="#{registration.password}"
-                                        required="true"
-                                        onkeyup="checkPassword1(); return false;"
-                                        >
-                            </p:password>
+                            <h:outputLabel for="id_pass1" class="fieldLabel" value="Password:"/>
+                            <h:inputSecret id="id_pass1"
+                                           class="right"
+                                           value="#{registration.password}"
+                                           required="true"
+                                           onkeyup="checkPassword1(); return false;"
+                                           >
+                            </h:inputSecret>
                             <span id="id_pass1_msg" class="confirmMsg"></span>
                         </div>
 
                         <div>
-                            <p:outputLabel for="id_pass2" class="fieldLabel" value="Confirm password:"/>   
-                            <p:password id="id_pass2"
-                                        class="right"
-                                        required="true"
+                            <h:outputLabel for="id_pass2" class="fieldLabel" value="Confirm password:"/>   
+                            <h:inputSecret id="id_pass2"
+                                           class="right"
+                                           required="true"
 
-                                        onkeyup="checkPassword2(); return false;"
-                                        >
-                            </p:password>
+                                           onkeyup="checkPassword2(); return false;"
+                                           >
+                            </h:inputSecret>
                             <span id="id_pass2_msg" class="confirmMsg"></span>
                         </div>
 
                         <div>
-                            <p:outputLabel for="id_firstName" class="fieldLabel" value="First name:"/>   
-                            <p:inputText id="id_firstName"
+                            <h:outputLabel for="id_firstName" class="fieldLabel" value="First name:"/>   
+                            <h:inputText id="id_firstName"
                                          class="right"
                                          value="#{registration.firstName}"
                                          required="true"
                                          onkeyup="checkFirstName()"
                                          >
-                            </p:inputText>
+                            </h:inputText>
                             <span id="id_firstName_msg" class="confirmMsg"></span>
                         </div>
 
                         <div>
-                            <p:outputLabel for="id_lastName" class="fieldLabel" value="Last name:"/>   
-                            <p:inputText id="id_lastName"
+                            <h:outputLabel for="id_lastName" class="fieldLabel" value="Last name:"/>   
+                            <h:inputText id="id_lastName"
                                          class="right"
                                          value="#{registration.lastName}"
                                          required="true"
                                          onkeyup="checkLastName()"
                                          >
-                            </p:inputText>
+                            </h:inputText>
                             <span id="id_lastName_msg" class="confirmMsg"></span>
                         </div>
 
                         <div>
-                            <p:outputLabel for="id_phone" class="fieldLabel" value="Phone number:"/>   
-                            <p:inputText id="id_phone"
+                            <h:outputLabel for="id_phone" class="fieldLabel" value="Phone number:"/>   
+                            <h:inputText id="id_phone"
                                          class="right"
                                          value="#{registration.phone}"
                                          required="true"
                                          onkeyup="checkPhone()"
                                          >
-                            </p:inputText>
+                            </h:inputText>
                             <span id="id_phone_msg" class="confirmMsg"></span>
                         </div>
 
                         <div>
-                            <p:outputLabel for="id_email" class="fieldLabel" value="E-mail:"/>   
-                            <p:inputText id="id_email"
+                            <h:outputLabel for="id_email" class="fieldLabel" value="E-mail:"/>   
+                            <h:inputText id="id_email"
                                          class="right"
                                          value="#{registration.email}"
                                          onkeyup="checkEmail()"
                                          required="true"
                                          >
-                            </p:inputText>
+                            </h:inputText>
                             <span id="id_email_msg" class="confirmMsg"></span>
                         </div>
 
                         <div>
-                            <p:outputLabel for="id_organziation" class="fieldLabel" value="Organization:"/>   
-                            <p:inputText id="id_organziation"
+                            <h:outputLabel for="id_organziation" class="fieldLabel" value="Organization:"/>   
+                            <h:inputText id="id_organziation"
                                          class="right"
                                          value="#{registration.organization}"
                                          required="true"
                                          >
-                            </p:inputText>
+                            </h:inputText>
                         </div>
 
-                        <div>
-                            <p:outputLabel for="id_dateOfBirth" class="fieldLabel" value="Date of birth:"/>
-                            <p:calendar id="id_dateOfBirth"
-                                        class="right"
-                                        value="#{registration.dateOfBirth}"
-                                        required="true"/>
-                        </div>
+                        <h:inputFile id="id_image"
+                                     required="true"
+                                     value="#{registration.image}"/>
 
-                        <div>
-                            <p:outputLabel for="id_image" class="fieldLabel" value="Image:"/>
-                            <p:fileUpload id="id_image"
-                                          class="right"
-                                          fileUploadListener="#{registration.imageUploaded}"/>
-                        </div>
-
-                        <p:commandButton ajax="false" value="Register" action="#{registration.register()}"/>
+                        <h:commandButton value="Register" action="#{registration.register()}">
+                            <f:ajax execute="@form" render="id_errors"/>
+                        </h:commandButton>
                     </h:form>
                 </div>
 
