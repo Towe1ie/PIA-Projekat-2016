@@ -16,6 +16,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -31,9 +32,8 @@ public class Registration
 {
 
     private String username, password, firstName, lastName, phone, email, organization;
-    private Date dateOfBirth;
+    private int day, month, year;
     private Part image;
-    private UploadedFile file;
 
     // <editor-fold defaultstate="collapsed" desc="Getters and setters">
     public String getFirstName()
@@ -46,14 +46,34 @@ public class Registration
 	this.firstName = firstName;
     }
 
-    public UploadedFile getFile()
+    public int getDay()
     {
-	return file;
+	return day;
     }
 
-    public void setFile(UploadedFile file)
+    public void setDay(int day)
     {
-	this.file = file;
+	this.day = day;
+    }
+
+    public int getMonth()
+    {
+	return month;
+    }
+
+    public void setMonth(int month)
+    {
+	this.month = month;
+    }
+
+    public int getYear()
+    {
+	return year;
+    }
+
+    public void setYear(int year)
+    {
+	this.year = year;
     }
 
     public String getLastName()
@@ -96,16 +116,6 @@ public class Registration
 	this.organization = organization;
     }
 
-    public Date getDateOfBirth()
-    {
-	return dateOfBirth;
-    }
-
-    public void setDateOfBirth(Date dateOfBirth)
-    {
-	this.dateOfBirth = dateOfBirth;
-    }
-
     public String getUsername()
     {
 	return username;
@@ -137,14 +147,9 @@ public class Registration
     }
     // </editor-fold>
 
-    public void imageUploaded(FileUploadEvent e)
-    {
-	file = e.getFile();
-    }
-
     public String register()
     {
-	try (InputStream image_input = file.getInputstream())
+	try (InputStream image_input = image.getInputStream())
 	{
 	    Class.forName("com.mysql.jdbc.Driver");
 	    Connection conn = DriverManager.getConnection(
@@ -155,6 +160,9 @@ public class Registration
 	    String query = "INSERT INTO user_accounts values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	    PreparedStatement ps = conn.prepareStatement(query);
 
+	    Calendar cal = Calendar.getInstance();
+	    cal.set(year, month - 1, day);
+	    
 	    ps.setString(1, username);
 	    ps.setString(2, password);
 	    ps.setString(3, firstName);
@@ -162,7 +170,7 @@ public class Registration
 	    ps.setString(5, phone);
 	    ps.setString(6, email);
 	    ps.setString(7, organization);
-	    ps.setDate(8, new java.sql.Date(dateOfBirth.getTime()));
+	    ps.setDate(8, new java.sql.Date(cal.getTimeInMillis()));
 	    ps.setBinaryStream(9, image_input);
 	    
 	    ps.executeUpdate();

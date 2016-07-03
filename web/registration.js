@@ -5,7 +5,7 @@
  */
 
 var bad_color = "#ff6666";
-var ok_color = "#66cc66";
+var ok_color = "#ffffff";
 
 var pass1_ok, pass2_ok, firstName_ok, email_ok, phone_ok;
 
@@ -32,7 +32,7 @@ function checkPassword1()
     if (patt.test(pass_elem.value))
     {
 	pass_elem.style.backgroundColor = ok_color;
-	msg_elem.innerHTML = "Pasword is fine";
+	msg_elem.innerHTML = "";
 	msg_elem.style.color = ok_color;
 	pass1_ok = true;
     }
@@ -56,7 +56,7 @@ function checkPassword2()
     if (pass1 === pass2 && pass1_ok)
     {
 	pass2_elem.style.backgroundColor = ok_color;
-	msg_elem.innerHTML = "Password matches original";
+	msg_elem.innerHTML = "";
 	msg_elem.style.color = ok_color;
 	pass2_ok = true;
     }
@@ -80,7 +80,7 @@ function checkFirstName()
     if (!patt.test(name_elem.value) && len >= 2)
     {
 	name_elem.style.backgroundColor = ok_color;
-	msg_elem.innerHTML = "First name fine";
+	msg_elem.innerHTML = "";
 	msg_elem.style.color = ok_color;
 	firstName_ok = true;
     }
@@ -104,7 +104,7 @@ function checkLastName()
     if (!patt.test(name_elem.value) && len >= 2)
     {
 	name_elem.style.backgroundColor = ok_color;
-	msg_elem.innerHTML = "Last name fine";
+	msg_elem.innerHTML = "";
 	msg_elem.style.color = ok_color;
 	lastName_ok = true;
     }
@@ -126,7 +126,7 @@ function checkPhone()
     if (!patt.test(phone_elem.value) && phone_elem.value.length >= 9)
     {
 	phone_elem.style.backgroundColor = ok_color;
-	phone_msg.innerHTML = "Valid number";
+	phone_msg.innerHTML = "";
 	phone_msg.style.color = ok_color;
 	phone_ok = true;
     }
@@ -149,7 +149,7 @@ function checkEmail()
     if (patt.test(email_elem.value))
     {
 	email_elem.style.backgroundColor = ok_color;
-	email_msg.innerHTML = "Valid email";
+	email_msg.innerHTML = "";
 	email_msg.style.color = ok_color;
 	email_ok = true;
     }

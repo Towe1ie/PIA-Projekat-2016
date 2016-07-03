@@ -3,7 +3,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>Facelet Title</title>
 
@@ -16,110 +18,152 @@
 
             <ui:define name="content">
                 <script src="registration.js"/>
+                <div class="centered" id="id_div_body">
+                    <h:form id="id_regform" enctype="multipart/form-data">
 
-                <div>
-                    <h:form id="id_regform" style="margin: 0" enctype="multipart/form-data">
-                        <div style="margin: 0px">
-                            <h:outputLabel for="id_username" class="fieldLabel" value="Username: "/>
-                            <h:inputText id="id_username"
-                                         class="right"
-                                         value="#{registration.username}"
-                                         required="true"/>
-                            <span id="id_user_msg" class="confirmMsg"></span>
-                        </div> 
+                        <h:panelGrid columns="1" class="registration centered">
+                            <h:panelGroup>
+                                <p:watermark for="id_username" value="Username"/>
+                                <h:inputText id="id_username"
+                                             class="right"
+                                             value="#{registration.username}"
 
-                        <div>
-                            <h:outputLabel for="id_pass1" class="fieldLabel" value="Password:"/>
-                            <h:inputSecret id="id_pass1"
-                                           class="right"
-                                           value="#{registration.password}"
-                                           required="true"
-                                           onkeyup="checkPassword1(); return false;"
-                                           >
-                            </h:inputSecret>
-                            <span id="id_pass1_msg" class="confirmMsg"></span>
-                        </div>
+                                             required="true"/>
+                                <span id="id_user_msg" class="confirmMsg"></span>
+                            </h:panelGroup> 
 
-                        <div>
-                            <h:outputLabel for="id_pass2" class="fieldLabel" value="Confirm password:"/>   
-                            <h:inputSecret id="id_pass2"
-                                           class="right"
-                                           required="true"
+                            <h:panelGroup>
+                                <p:watermark for="id_pass1" value="Password"/>
+                                <h:inputSecret id="id_pass1"
+                                               class="right"
+                                               value="#{registration.password}"
+                                               required="true"
+                                               onkeyup="checkPassword1(); return false;"
+                                               >
+                                </h:inputSecret>
+                                <span id="id_pass1_msg" class="confirmMsg"></span>
+                            </h:panelGroup>
 
-                                           onkeyup="checkPassword2(); return false;"
-                                           >
-                            </h:inputSecret>
-                            <span id="id_pass2_msg" class="confirmMsg"></span>
-                        </div>
+                            <h:panelGroup>
+                                <p:watermark for="id_pass2" value="Confirm password"/>
+                                <h:inputSecret id="id_pass2"
+                                               class="right"
+                                               required="true"
 
-                        <div>
-                            <h:outputLabel for="id_firstName" class="fieldLabel" value="First name:"/>   
-                            <h:inputText id="id_firstName"
-                                         class="right"
-                                         value="#{registration.firstName}"
-                                         required="true"
-                                         onkeyup="checkFirstName()"
-                                         >
-                            </h:inputText>
-                            <span id="id_firstName_msg" class="confirmMsg"></span>
-                        </div>
+                                               onkeyup="checkPassword2(); return false;"
+                                               >
+                                </h:inputSecret>
+                                <span id="id_pass2_msg" class="confirmMsg"></span>
+                            </h:panelGroup>
 
-                        <div>
-                            <h:outputLabel for="id_lastName" class="fieldLabel" value="Last name:"/>   
-                            <h:inputText id="id_lastName"
-                                         class="right"
-                                         value="#{registration.lastName}"
-                                         required="true"
-                                         onkeyup="checkLastName()"
-                                         >
-                            </h:inputText>
-                            <span id="id_lastName_msg" class="confirmMsg"></span>
-                        </div>
+                            <h:panelGroup>
+                                <p:watermark for="id_firstName" value="First name"/>
+                                <h:inputText id="id_firstName"
+                                             class="right"
+                                             value="#{registration.firstName}"
+                                             required="true"
+                                             onkeyup="checkFirstName()"
+                                             >
+                                </h:inputText>
+                                <span id="id_firstName_msg" class="confirmMsg"></span>
+                            </h:panelGroup>
 
-                        <div>
-                            <h:outputLabel for="id_phone" class="fieldLabel" value="Phone number:"/>   
-                            <h:inputText id="id_phone"
-                                         class="right"
-                                         value="#{registration.phone}"
-                                         required="true"
-                                         onkeyup="checkPhone()"
-                                         >
-                            </h:inputText>
-                            <span id="id_phone_msg" class="confirmMsg"></span>
-                        </div>
+                            <h:panelGroup>
+                                <p:watermark for="id_lastName" value="Last name"/>
+                                <h:inputText id="id_lastName"
+                                             class="right"
+                                             value="#{registration.lastName}"
+                                             required="true"
+                                             onkeyup="checkLastName()"
+                                             >
+                                </h:inputText>
+                                <span id="id_lastName_msg" class="confirmMsg"></span>
+                            </h:panelGroup>
 
-                        <div>
-                            <h:outputLabel for="id_email" class="fieldLabel" value="E-mail:"/>   
-                            <h:inputText id="id_email"
-                                         class="right"
-                                         value="#{registration.email}"
-                                         onkeyup="checkEmail()"
-                                         required="true"
-                                         >
-                            </h:inputText>
-                            <span id="id_email_msg" class="confirmMsg"></span>
-                        </div>
+                            <h:panelGroup>
+                                <p:watermark for="id_phone" value="Phone number"/>
+                                <h:inputText id="id_phone"
+                                             class="right"
+                                             value="#{registration.phone}"
+                                             required="true"
+                                             onkeyup="checkPhone()"
+                                             >
+                                </h:inputText>
+                                <span id="id_phone_msg" class="confirmMsg"></span>
+                            </h:panelGroup>
 
-                        <div>
-                            <h:outputLabel for="id_organziation" class="fieldLabel" value="Organization:"/>   
-                            <h:inputText id="id_organziation"
-                                         class="right"
-                                         value="#{registration.organization}"
-                                         required="true"
-                                         >
-                            </h:inputText>
-                        </div>
+                            <h:panelGroup>
+                                <p:watermark for="id_email" value="Email"/>
+                                <h:inputText id="id_email"
+                                             class="right"
+                                             value="#{registration.email}"
+                                             onkeyup="checkEmail()"
+                                             required="true"
+                                             >
+                                </h:inputText>
+                                <span id="id_email_msg" class="confirmMsg"></span>
+                            </h:panelGroup>
 
-                        <h:inputFile id="id_image"
-                                     required="true"
-                                     value="#{registration.image}"/>
+                            <h:panelGroup>
+                                <p:watermark for="id_organziation" value="Organization"/>
+                                <h:inputText id="id_organziation"
+                                             class="right"
+                                             value="#{registration.organization}"
+                                             required="true"
+                                             >
+                                </h:inputText>  
+                            </h:panelGroup>
 
-                        <h:commandButton value="Register" action="#{registration.register()}">
-                            <f:ajax execute="@form" render="id_errors"/>
-                        </h:commandButton>
+                            <h:panelGroup>
+                                <h:panelGrid class="datePanel" columns="4" columnClasses="clFirst, clSecond, clThird, clForth">
+                                    <h:column>
+                                        <h:outputText style="width: 100%" value="Date of birth:"/>
+                                    </h:column>
+
+                                    <h:column>
+                                        <h:selectOneMenu value="#{registration.day}" style="width: 100%" id="id_day">
+                                            <c:forEach var="i" begin="1" end="31">
+                                                <f:selectItem itemValue="${i}"/>
+                                            </c:forEach>
+                                        </h:selectOneMenu>
+                                    </h:column>
+                                    <h:column>
+                                        <h:selectOneMenu value="#{registration.month}" style="width: 100%" id="id_month">
+                                            <c:forEach  var="i" begin="1" end="12">
+                                                <f:selectItem itemValue="${i}"/>
+                                            </c:forEach>
+                                        </h:selectOneMenu>
+                                    </h:column>
+
+                                    <h:column>
+                                        <h:selectOneMenu value="#{registration.year}" style="width: 100%" id="id_year">
+                                            <c:forEach varStatus="i" step="1" begin="1900" end="2016">
+                                                <f:selectItem itemValue="${i.index}"/>
+                                            </c:forEach>
+                                        </h:selectOneMenu>
+                                    </h:column>
+                                </h:panelGrid>
+                            </h:panelGroup>
+
+                            <h:panelGroup>
+                                <h:outputLabel for="id_image" class="input_file_label"> Labela </h:outputLabel>
+                                <h:inputFile id="id_image"
+                                             class="input_file"
+                                             required="true"
+                                             value="#{registration.image}"/>
+                            </h:panelGroup>
+
+                            <f:facet name="footer">
+                                <div style="text-align: center;">
+                                    <h:commandButton id="id_button" class="input_file_label" value="Register" action="#{registration.register()}">
+                                        <f:ajax execute="@form" render="id_errors"/>
+                                    </h:commandButton>
+                                </div>
+                            </f:facet>
+                        </h:panelGrid>
+
                     </h:form>
                 </div>
-
             </ui:define>
         </ui:composition>
     </h:body>

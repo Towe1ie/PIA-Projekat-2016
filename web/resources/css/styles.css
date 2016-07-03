@@ -17,6 +17,19 @@ and open the template in the editor.
     text-align: center;
 }
 
+form
+{
+    background-color: #efede1;
+    width: 330px;
+    padding: 10px;
+    margin: 0 auto;
+}
+
+body
+{
+    background-color: #e1e3e4;
+}
+
 .error
 {
     color: #ff6666;
@@ -24,25 +37,89 @@ and open the template in the editor.
 
 .registration
 {
-    margin: 0 auto;
+    /*min-width: 500px;*/
+    /*width: 250px;*/
+    width: 80%;
+
+
 }
+
+.input_file
+{
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.input_file_label
+{
+    background-color: #b1b6b9;
+    width: 100%;
+    display: block;
+    text-align: center;
+    cursor: pointer;
+    border-style: none;
+}
+
 
 .centered
 {
-    display: block;
-    text-align: center;
+    /*    display: block;
+        text-align: center;*/
+    margin: auto;
 }
 
 .fieldLabel
 {
     float: left;
     display: inline-block;
-    width: 200px;
+    width: 30%;
+    /*width: 150px;*/
     text-align: right;
     margin-right: 10px;
 }
 
+
+
 .confirmMsg
 {
     margin: 0;
+}
+
+.right
+{
+    padding: 3px;
+    width: 100%;
+    border-radius: 1px;
+    border-style: none;
+}
+
+.clFirst
+{
+    width: 30%;
+}
+
+.clSecond
+{
+    width: 15%;
+}
+
+.clThird
+{
+    width: 15%;
+}
+
+.clForth
+{
+    width: 20%;
+}
+
+.datePanel
+{
+    width: 100%;
+    border-spacing: 0;
+    padding: 0;
 }
