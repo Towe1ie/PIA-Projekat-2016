@@ -175,8 +175,8 @@ body
     height: 25px;
     font-family: Raleway;
     text-align: center;
-     background-color: white;
-   
+    background-color: white;
+
 }
 
 .right li
@@ -190,18 +190,58 @@ body
 {
     font-family: Raleway;
     text-align: center;
-    
+
 }
 
 .multiAutoComplete
 {
-    background-color: white;
+    /*background-color: white;*/
     width: 100%;
+
+}
+
+div.multiAutoComplete
+{
+
 }
 
 .multiAutoComplete ul
 {
     width: 100%;
+    text-align: center;
+    background-color: white;
+}
+
+ul.ui-autocomplete-multiple-container
+{
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgba(0,0,0,0);
+    padding: 1px;
+}
+
+/*.multiAutoComplete span.ui-autocomplete*/
+
+.multiAutoComplete li.ui-autocomplete-input-token
+{
+    float: none;
+}
+
+.ui-autocomplete-multiple-container
+{
+    padding : 1px !important;
+}
+
+.multiAutoComplete input[type="text"]
+{
+    text-align: center;
+    height: 25px;
+    width: 100%;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgba(0,0,0,0);
+    padding: 1px;
+    margin: 0;
 }
 
 .multiAutoComplete li.ui-state-active
@@ -213,18 +253,29 @@ body
 {
     /*background-color:red;*/
     background-image: url("css/x.png");
-    width: 10px;
-    height: 10px;
+    width: 9px;
+    height: 9px;
     top: 25%;
     margin-top: 0;
     float: right;
     background-size: 100%;
+
     /*position: relative;*/
 }
 
 .multiAutoComplete table
 {
     width: 100%;
+}
+
+div.ui-autocomplete-panel
+{
+    background-color: #e0ded3;
+}
+
+li.ui-autocomplete-item:hover, li.ui-autocomplete-item:focus
+{
+    background-color: #d3d1c7;
 }
 
 .right:focus

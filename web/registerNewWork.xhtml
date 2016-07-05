@@ -26,6 +26,16 @@
                                             completeMethod="#{registerNewWork.completeKeyword}"
                                             multiple="true"/>
                         </h:panelGroup>
+
+                        <h:panelGroup>
+                            <p:watermark for="id_field" value="Field"/>
+                            <p:autoComplete id="id_field"
+                                            class="multiAutoComplete"
+                                            cache="true"
+                                            dropdown="true"
+                                            completeMethod="#{registerNewWork.fields}"
+                                            />
+                        </h:panelGroup>
                     </h:panelGrid>
                 </h:form>
             </ui:define>

@@ -14,6 +14,7 @@ import util.DB;
 @RequestScoped
 public class RegisterNewWork
 {
+
     private String title;
     private String[] keywords;
     private String error;
@@ -48,28 +49,27 @@ public class RegisterNewWork
     {
 	this.keywords = keywords;
     }
-    
+
     // </editor-fold>
-    
     public ArrayList<String> completeKeyword(String keyword)
     {
 	ArrayList<String> keywords = new ArrayList();
-	
+
 	Connection conn = DB.getInstance().getConnection();
-	
+
 	if (conn == null)
 	{
 	    error = "Database connection problem";
 	    return null;
 	}
-	
+
 	String query = "select keyword from keyword where keyword like \"%" + keyword + "%\"";
 	try
 	{
 	    Statement stmt = conn.createStatement();
 	    ResultSet res = stmt.executeQuery(query);
-	    
-	    while(res.next())
+
+	    while (res.next())
 	    {
 		keywords.add(res.getString("keyword"));
 	    }
@@ -79,9 +79,43 @@ public class RegisterNewWork
 	    error = ex.getMessage();
 	    System.err.println(ex.getMessage());
 	}
-	
+
 	DB.getInstance().putConnection(conn);
-	
+
 	return keywords;
+    }
+
+    public ArrayList<String> fields(String field_query)
+    {
+	ArrayList<String> fields = new ArrayList();
+
+	Connection conn = DB.getInstance().getConnection();
+
+	if (conn == null)
+	{
+	    error = "Database connection problem";
+	    return null;
+	}
+
+	String query = "select name from field where name like \"%" + field_query + "%\"";
+	try
+	{
+	    Statement stmt = conn.createStatement();
+	    ResultSet res = stmt.executeQuery(query);
+
+	    while (res.next())
+	    {
+		fields.add(res.getString("name"));
+	    }
+	}
+	catch (SQLException ex)
+	{
+	    error = ex.getMessage();
+	    System.err.println(ex.getMessage());
+	}
+
+	DB.getInstance().putConnection(conn);
+
+	return fields;
     }
 }
