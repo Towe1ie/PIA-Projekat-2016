@@ -1,0 +1,115 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+
+        <!--        <h:outputScript name="JS/jquery-3.0.0.js" target="head"/>
+                <h:outputScript name="JS/userHome.js"/>-->
+    </h:head>
+    <h:body>
+        <ui:composition template="/Templates/master.xhtml">
+            <ui:define name="title">
+                User home
+            </ui:define>
+
+            <ui:define name="content">
+                <script src="resources/JS/userHome.js"/>
+
+                <div class="leftList flatTable">
+                    <h:dataTable id="id_conf_list" value="#{userHome.conferences}" var="c">
+                        <h:column>
+                            <f:facet name="header"> Name </f:facet>
+                                #{c.name}
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header"> Location </f:facet>
+                                #{c.location}
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header"> Conference date </f:facet>
+                                #{c.conf_date}
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header"> Submissions start date </f:facet>
+                                #{c.subm_start}
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header"> Submissions end date </f:facet>
+                                #{c.subm_end}
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header"> Maximum submissions </f:facet>
+                                #{c.max_subm}
+                        </h:column>
+
+                        <h:column>
+                            <h:form prependId="false">
+                                <h:commandButton style="display: none;" id="id_btn" action="#{c.pick}"/>
+
+                                <div>
+                                    <h:button class="button menuButtonColor" value="Menu"/>
+                                    <div class="dropDown">
+                                        <h:commandLink class="menuItem" value="Register new scientific work" action="#{c.pick()}"/>
+                                        <h:commandLink class="menuItem" value="Update existing scientific work"/>
+                                    </div>
+                                </div>
+                            </h:form>
+
+
+
+                        </h:column>
+                    </h:dataTable>
+                </div>
+
+                <div style="float: right;">
+                    <h:form class="fillform">
+                        <h:panelGrid columns="1" class="fillpanel centered">
+                            <h:panelGroup>
+                                <p:watermark for="id_oldpassword" value="Old password"/>
+                                <h:inputSecret id="id_oldpassword"
+                                               class="right"
+                                               requiredMessage="Old password required"
+                                               required="true"/>
+                                <span class="confirmMsg">
+                                    <h:message id="id_oldpass_msg" for="id_oldpassword" class="errorColor"/>
+                                </span>
+                            </h:panelGroup> 
+
+                            <h:panelGroup>
+                                <p:watermark for="id_newpass" value="New password"/>
+                                <h:inputSecret id="id_newpass"
+                                               class="right"
+                                               requiredMessage="New password required"
+                                               required="true">
+                                </h:inputSecret>
+                                <span class="confirmMsg">
+                                    <h:message id="id_newpass_msg" for="id_newpass" class="errorColor"/>
+                                </span>
+                            </h:panelGroup>
+
+                            <f:facet name="footer">
+                                <div style="text-align: center;">
+                                    <h:commandButton id="id_button" class="button" value="Change password"/>
+                                </div>
+                            </f:facet>
+                        </h:panelGrid>
+                    </h:form>
+                </div>
+
+                <div class="breakFloats"/>
+                <h:outputText value="#{userHome.error}" class="errorColor"/>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

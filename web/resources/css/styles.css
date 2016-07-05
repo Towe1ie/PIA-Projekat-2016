@@ -8,6 +8,32 @@ and open the template in the editor.
     Author     : Nemanja
 */
 
+/*@font-face
+{
+    font-family : Raleway-Black;
+    src: url('../fonts/Raleway-Black.ttf');
+}*/
+
+@font-face {
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 400;
+    /*src: local('Raleway'), local('Raleway-Regular'), url(https://fonts.gstatic.com/s/raleway/v11/yQiAaD56cjx1AooMTSghGfY6323mHUZFJMgTvxaG2iE.woff2) format('woff2');*/
+}
+/* latin */
+@font-face {
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Raleway'), local('Raleway-Regular'), url(https://fonts.gstatic.com/s/raleway/v11/0dTEPzkLWceF7z0koJaX1A.woff2) format('woff2');
+}
+
+.ui-menu .ui-menu-item a
+{
+    font-family: Raleway;
+}
+
+
 #errors
 {
     border: 2px;
@@ -17,7 +43,7 @@ and open the template in the editor.
     text-align: center;
 }
 
-form
+#id_regform
 {
     background-color: #efede1;
     width: 330px;
@@ -25,23 +51,71 @@ form
     margin: 0 auto;
 }
 
+.fillform
+{
+    background-color: #efede1;
+    width: 330px;
+    padding: 10px;
+    margin: 0 auto;
+}
+
+
+.flat
+{
+    /*padding: 3px;*/
+    width: 100%;
+    border-radius: 1px;
+    border-style: none;
+    /*height: 25px;*/
+    font-family: Raleway;
+}
+
 body
 {
     background-color: #e1e3e4;
+    font-family: "Raleway";
+    font-size: 13px;
+    margin: 0;
 }
 
-.error
+.errorColor
 {
-    color: #ff6666;
+    color: rgba(255, 125, 60, 0.7);
 }
 
-.registration
+.registration, .fillpanel
 {
-    /*min-width: 500px;*/
-    /*width: 250px;*/
+    /*border-collapse: collapse;*/
     width: 80%;
+}
 
+.leftList
+{
+    float: left;
+}
 
+.breakFloats
+{
+    clear: both;
+}
+
+.button
+{
+    background-color: #b1b6b9;
+    width: 100%;
+    display: block;
+    text-align: center;
+    cursor: pointer;
+    border-style: none;
+    padding: 10px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 17px;
+    color : seashell;
+}
+
+.menuButtonColor
+{
+    background-color: #979b9e;
 }
 
 .input_file
@@ -52,6 +126,7 @@ body
     overflow: hidden;
     position: absolute;
     z-index: -1;
+    display: inline-block;
 }
 
 .input_file_label
@@ -62,13 +137,13 @@ body
     text-align: center;
     cursor: pointer;
     border-style: none;
+    padding: 10px 0px;
+    font-family: Raleway;
+    color : seashell;
 }
-
 
 .centered
 {
-    /*    display: block;
-        text-align: center;*/
     margin: auto;
 }
 
@@ -82,19 +157,80 @@ body
     margin-right: 10px;
 }
 
-
-
 .confirmMsg
 {
     margin: 0;
+    font-size: 13px;
 }
 
-.right
+.right, .right ul
 {
-    padding: 3px;
     width: 100%;
     border-radius: 1px;
-    border-style: none;
+    border-style: solid;
+    border-width: 1px;
+    /*border-color: #ff7d3c;*/
+    border-color: rgba(255, 156, 96, 0);
+    outline-offset: 0;
+    height: 25px;
+    font-family: Raleway;
+    text-align: center;
+     background-color: white;
+   
+}
+
+.right li
+{
+    font-family: Raleway;
+    text-align: center;
+    /*width: 100%;*/
+}
+
+.right input
+{
+    font-family: Raleway;
+    text-align: center;
+    
+}
+
+.multiAutoComplete
+{
+    background-color: white;
+    width: 100%;
+}
+
+.multiAutoComplete ul
+{
+    width: 100%;
+}
+
+.multiAutoComplete li.ui-state-active
+{
+    background-color: seashell;
+}
+
+.multiAutoComplete span.ui-autocomplete-token-icon
+{
+    /*background-color:red;*/
+    background-image: url("css/x.png");
+    width: 10px;
+    height: 10px;
+    top: 25%;
+    margin-top: 0;
+    float: right;
+    background-size: 100%;
+    /*position: relative;*/
+}
+
+.multiAutoComplete table
+{
+    width: 100%;
+}
+
+.right:focus
+{
+    outline: none !important;
+    box-shadow: 0px 0px 10px #c2bcaa;
 }
 
 .clFirst
@@ -122,4 +258,81 @@ body
     width: 100%;
     border-spacing: 0;
     padding: 0;
+}
+
+.menu ul
+{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color:  #b1b6b9;
+    box-shadow: none;
+}
+
+.menu li
+{
+    float: left;
+}
+
+.menuItem
+{
+    background-color: #b1b6b9;
+    text-decoration: none;
+    width: 100%;
+    display: block;
+    text-align: center;
+    cursor: pointer;
+    border-style: none;
+    padding: 10px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 17px;
+    color : seashell;
+}
+
+.menuItem:hover
+{
+    background-color: #878681;
+}
+
+.content
+{
+    margin-top: 60px;
+}
+
+.flatTable th, td
+{
+    background-color: #efede1;
+    text-align: center;
+    padding: 10px;
+
+}
+
+.flatTable th
+{
+    background-color: #979b9e;
+}
+
+.flatTable table
+{
+    border-collapse: collapse;
+}
+
+.flatTable tr:nth-child(even) td
+{
+    background-color:#c4c2b8; 
+}
+
+.flatTable tr:hover td
+{
+    background-color: #878681;
+}
+
+.dropDown
+{
+    position: absolute;
+    display: none;
 }

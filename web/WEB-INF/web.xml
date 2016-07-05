@@ -29,6 +29,11 @@
     </filter-mapping>
     
     <welcome-file-list>
-        <welcome-file>faces/registration.xhtml</welcome-file>
+        <welcome-file>faces/registerNewWork.xhtml</welcome-file>
     </welcome-file-list>
+    
+    <context-param>
+        <param-name>primefaces.THEME</param-name>
+        <param-value>none</param-value>
+    </context-param>
 </web-app>

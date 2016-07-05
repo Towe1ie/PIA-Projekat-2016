@@ -12,12 +12,11 @@
     </h:head>
     <h:body>
         <ui:composition template="/Templates/master.xhtml">
-
-
+            
             <ui:define name="title"> Registration </ui:define>
 
             <ui:define name="content">
-                <script src="registration.js"/>
+                <script src="registration2.js"/>
                 <div class="centered" id="id_div_body">
                     <h:form id="id_regform" enctype="multipart/form-data">
 
@@ -27,9 +26,12 @@
                                 <h:inputText id="id_username"
                                              class="right"
                                              value="#{registration.username}"
-
+                                             onkeyup="checkUsername()"
+                                             requiredMessage="Username required"
                                              required="true"/>
-                                <span id="id_user_msg" class="confirmMsg"></span>
+                                <span id="id_user_msg" class="confirmMsg">
+                                    <h:message id="id_usr_msg" for="id_username" class="errorColor"/>
+                                </span>
                             </h:panelGroup> 
 
                             <h:panelGroup>
@@ -117,18 +119,18 @@
                             <h:panelGroup>
                                 <h:panelGrid class="datePanel" columns="4" columnClasses="clFirst, clSecond, clThird, clForth">
                                     <h:column>
-                                        <h:outputText style="width: 100%" value="Date of birth:"/>
+                                        <h:outputText style="width: 100%; color: #b1b6b9" value="Date of birth:"/>
                                     </h:column>
 
                                     <h:column>
-                                        <h:selectOneMenu value="#{registration.day}" style="width: 100%" id="id_day">
+                                        <h:selectOneMenu value="#{registration.day}" class="flat" id="id_day">
                                             <c:forEach var="i" begin="1" end="31">
                                                 <f:selectItem itemValue="${i}"/>
                                             </c:forEach>
                                         </h:selectOneMenu>
                                     </h:column>
                                     <h:column>
-                                        <h:selectOneMenu value="#{registration.month}" style="width: 100%" id="id_month">
+                                        <h:selectOneMenu value="#{registration.month}" class="flat" id="id_month">
                                             <c:forEach  var="i" begin="1" end="12">
                                                 <f:selectItem itemValue="${i}"/>
                                             </c:forEach>
@@ -136,7 +138,7 @@
                                     </h:column>
 
                                     <h:column>
-                                        <h:selectOneMenu value="#{registration.year}" style="width: 100%" id="id_year">
+                                        <h:selectOneMenu value="#{registration.year}"  class="flat" id="id_year">
                                             <c:forEach varStatus="i" step="1" begin="1900" end="2016">
                                                 <f:selectItem itemValue="${i.index}"/>
                                             </c:forEach>
@@ -146,7 +148,9 @@
                             </h:panelGroup>
 
                             <h:panelGroup>
-                                <h:outputLabel for="id_image" class="input_file_label"> Labela </h:outputLabel>
+                                    <h:outputLabel for="id_image" class="input_file_label">
+                                        Upload image
+                                    </h:outputLabel>
                                 <h:inputFile id="id_image"
                                              class="input_file"
                                              required="true"
@@ -155,8 +159,8 @@
 
                             <f:facet name="footer">
                                 <div style="text-align: center;">
-                                    <h:commandButton id="id_button" class="input_file_label" value="Register" action="#{registration.register()}">
-                                        <f:ajax execute="@form" render="id_errors"/>
+                                    <h:commandButton id="id_button" class="button" value="Register" action="#{registration.register()}">
+                                        <f:ajax execute="@form" render="@form"/>
                                     </h:commandButton>
                                 </div>
                             </f:facet>

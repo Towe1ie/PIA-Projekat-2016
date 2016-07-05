@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
         <title>
             <ui:insert name="title">
@@ -11,21 +12,31 @@
             </ui:insert>
         </title>
 
-
+        <!--<script src="../resources/JS/jquery-3.0.0.js"/>-->
     </h:head>
     <h:body >
         <f:facet name="last">
             <h:outputStylesheet library="css" name="styles.css"/>
         </f:facet>
 
-        <ui:insert name="content">
-            Default Content
-        </ui:insert>
+        <c:if test="#{not global.signedIn}">
+            <ui:include src="/nonregisteredMenu.xhtml"/>
+        </c:if>
 
-<!--        <div id="errors">
-            Messages:
-            <h:messages id="id_errors" style="color: red"/>
-        </div>-->
+        <c:if test="#{global.signedIn}">
+            <ui:include src="/registeredMenu.xhtml"/>
+        </c:if>
+
+        <div class="content">
+            <ui:insert name="content">
+                Default Content
+            </ui:insert>
+
+            <div id="errors" class="errorColor breakFloats">
+                Messages:
+                <h:messages id="id_errors" class="errorColor"/>
+            </div>
+        </div>
     </h:body>
 </html>
 
